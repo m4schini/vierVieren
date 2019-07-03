@@ -1,4 +1,7 @@
+/.vscode/
+
 /js/jquery
+/js/modernizr-custom.js
+
 newIndex.html
 newProject.sh
-/.vscode/
