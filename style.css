@@ -1,0 +1,146 @@
+#verticalWarning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+}
+
+@media screen and (orientation:portrait) {
+    #verticalWarning {
+        display: block;
+    }
+}
+
+@media screen and (orientation:landscape) {
+    #verticalWarning {
+        display: none;
+    }
+}
+
+h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #0075C4;
+
+    text-align: center;
+}
+
+h2 {
+    margin-top: 33vh;
+    font-size: 10vw;
+}
+
+@media screen and (max-width: 992px) {
+    h1 {
+        font-size: 12vh;
+        margin-top: 1.5vw !important;
+        margin-bottom: 1.5vw !important;
+    }
+
+    #eq_display {
+        margin-bottom: 7vh;
+    }
+
+    #menu {
+        font-size: 5vh;
+        margin-top: 1.5vw !important;
+        margin-bottom: 1.5vw !important;
+    }
+
+    #menu a {
+        margin-right: 8px;
+        margin-left: 8px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    h1 {
+        font-size: 60px;
+        margin-top: 3vw !important;
+    }
+
+    #eq_display {
+        margin-bottom: 5vh;
+    }
+
+    #menu {
+        font-size: 25px;
+        margin-bottom: 3vw !important;
+    }
+
+    #menu a {
+        margin-right: 16px;
+        margin-left: 16px;
+    }
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #3CB1FF;
+}
+
+#equals {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 60px;
+
+    text-align: center;
+}
+
+#equals span {
+    margin: 8px;
+}
+
+#eq_display {
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    border-radius: 8px;
+
+    -webkit-box-shadow: 0px 9px 16px 0px rgba(50, 50, 50, 0.4);
+    -moz-box-shadow: 0px 9px 16px 0px rgba(50, 50, 50, 0.4);
+    box-shadow: 0px 9px 16px 0px rgba(50, 50, 50, 0.4);
+
+    display: flex;
+    justify-content: center;
+}
+
+#list_modules {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    text-align: center;
+    line-height: 55px;
+
+    width: 55px;
+    height: 80px;
+    display: inline-block;
+    background-color: #fff;
+    border: none;
+
+    padding: 10px;
+    margin: 2px;
+}
+
+.card.ignore-elements {
+    background-color: #E9E9E9;
+}
+
+.card.movable {
+    border: solid 1px rgb(0, 0, 0, 0.2);
+}

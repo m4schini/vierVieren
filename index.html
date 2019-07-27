@@ -2,167 +2,69 @@
 <html lang="de">
 
 <head>
-  <title>Vier Vieren</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vier Vieren</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <style>
-    html,
-    body {
-      height: 100% !important;
-    }
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700|Noto+Sans+JP:700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
-    #controls .btn {
-      font-size: 5vh !important;
-      width: 100% !important;
-      height: 90% !important;
-      color: white;
-    }
-
-    #remainer {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .displ {
-      text-align: center;
-      border: 1px solid black;
-      border-radius: 5px;
-      width: 20% !important;
-      min-width: 18% !important;
-      margin: 2px !important;
-      margin-top: 8px;
-    }
-
-    #display {
-      width: 100% !important;
-      height: auto;
-      min-height: 80%;
-
-      margin-top: 8px;
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
-
-      font-size: 50px;
-      font-weight: 500;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container h-100">
-    <div style="height: 30% !important">
-      <h1>Vier Vieren</h1>
-
-      <div id="remainer" class="row">
-        <div class="col-2 displ" id="displ_0">
-          0
-        </div>
-        <div class="col-2 displ" id="displ_1">
-          1
-        </div>
-        <div class="col-2 displ" id="displ_2">
-          2
-        </div>
-        <div class="col-2 displ" id="displ_3">
-          3
-        </div>
-        <div class="col-2 displ" id="displ_4">
-          4
-        </div>
-        <div class="col-2 displ" id="displ_5">
-          5
-        </div>
-        <div class="col-2 displ" id="displ_6">
-          6
-        </div>
-        <div class="col-2 displ" id="displ_7">
-          7
-        </div>
-        <div class="col-2 displ" id="displ_8">
-          8
-        </div>
-        <div class="col-2 displ" id="displ_9">
-          9
-        </div>
-      </div>
-      <div id="display" class="mDisplay">
-        
-
-      </div>
+    <div id="verticalWarning">
+        <h2>Bitte halte das Gerät horizontal</h2>
     </div>
-    <div style="height: 70% !important;">
-      <div id="controls" class="h-100">
-        <div class="row" style="height: 20% !important;">
+    <div class="container-fluid">
+        <div id="top" class="row">
+            <div class="col-lg-12 col-6">
+                <h1>Vier Vieren</h1>
+            </div>
+            <div id="menu" class="col-lg-12 col-6">
+                <a>Anleitung</a>
+                <a>Andere Spiele</a>
+                <a>Über Uns</a>
+            </div>
         </div>
-        <div class="row" style="height: 20% !important;">
-          <div class="col-4 h-100">
-            <a id="ctrl_plus" role="button" class="btn btn-dark drag" onclick="add(this)" value="+">+</a>
-          </div>
-          <div class="col-4 h-100">
-            <a id="ctrl_-" role="button" class="btn btn-dark drag" onclick="add(this)" value="-">-</a>
-          </div>
-          <div class="col-4 h-100">
-            <a id="ctrl_*" role="button" class="btn btn-dark drag" onclick="add(this)" value="*">*</a>
-          </div>
+        <div id="game">
+            <div class="row">
+                <div id="display" class="col-12 row" style="margin-left: 0;">
+                    <div id="eq_display" class="col-lg-11 col-10 center-me">
+                        <div class="card ignore-elements" data-math="4">4</div>
+                        <div class="card ignore-elements" data-math="4">4</div>
+                        <div class="card ignore-elements" data-math="4">4</div>
+                        <div class="card ignore-elements" data-math="4">4</div>
+                    </div>
+                    <div id="equals" class="col-lg-1 col-2">
+                        =<span id="equals_num">0</span>
+                    </div>
+                    <div class="col-10 col-lg-12">
+                            <div id="list_modules" class="center-me">
+                                <div class="card movable" data-math="+">+</div>
+                                <div class="card movable" data-math="-">-</div>
+                                <div class="card movable" data-math="(">(</div>
+                                <div class="card movable" data-math=")">)</div>
+                                <div class="card movable" data-math="*">·</div>
+                                <div class="card movable" data-math="/">:</div>
+                            </div>
+                        </div>
+                </div>
+                
+            </div>
         </div>
-        <div class="row" style="height: 20% !important;">
-          <div class="col-4 h-100">
-            <a id="ctrl_x" role="button" class="btn btn-dark drag" onclick="add(this)" value="^(">x^y</a>
-          </div>
-          <div class="col-4 h-100">
-            <a id="ctrl_4" role="button" class="btn btn-dark drag" onclick="add(this)" value="4">4</a>
-          </div>
-          <div class="col-4 h-100">
-            <a id="ctrl_/" role="button" class="btn btn-dark drag" onclick="add(this)" value="/">/</a>
-          </div>
+        <div id="footer">
+
         </div>
-        <div class="row" style="height: 20% !important;">
-          <div class="col-4 h-100">
-            <a id="ctrl_(" role="button" class="btn btn-dark drag" onclick="add(this)" value="(">(</a>
-          </div>
-          <div class="col-4 h-100">
-            <a id="ctrl_)" role="button" class="btn btn-dark drag" onclick="add(this)" value=")">)</a>
-          </div>
-          <div class="col-4 h-100">
-            <input id="ctrl_C" type="button" class="btn btn-dark" onclick="del()" value="C"></input>
-          </div>
-        </div>
-        <div class="row" style="height: 20% !important;">
-          <div class="col-12 h-100">
-            <input id="ctrl_=" type="button" class="btn btn-dark" value="=" onclick="calc(this)"></input>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  <script>
 
-  </script>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script>
 
-  </script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-  crossorigin="anonymous">
-  </script>
-  <script src="js/jquery/jquery-ui.js"></script>
-  <script src="js/jquery/jquery.ui.touch-punch.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/vierVieren.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+    <script src="node_modules/sortablejs/Sortable.min.js"></script>
+    <script src="game.js"></script>
 </body>
 
 </html>
