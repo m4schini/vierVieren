@@ -1,4 +1,9 @@
-var level = 0;
+var level;
+try {
+    level = window.sessionStorage.getItem("level");
+} catch (err) {
+    level + 0;
+}
 var display = document.getElementById('eq_display'),
     modules = document.getElementById('list_modules'),
     levelElem = document.getElementById('equals_num');
@@ -36,8 +41,7 @@ new Sortable(display, {
             console.log(eval(equation))
             if (eval(equation) === level) {
                 console.log(true)
-                level++;
-                levelElem.innerHTML = level;
+                levelSuc();
             }
         } catch (err) {
             console.log("nope")
@@ -65,8 +69,7 @@ new Sortable(display, {
             console.log(eval(equation))
             if (eval(equation) === level) {
                 console.log(true)
-                level++;
-                levelElem.innerHTML = level;
+                levelSuc();
             }
         } catch (err) {
             console.log("nope")
@@ -86,3 +89,26 @@ new Sortable(modules, {
         evt.item.parentNode.removeChild(evt.item)
     }
 });
+
+function levelSuc() {
+    $('#modal_nextLevel').modal('toggle')
+}
+
+function changeLevel(next) {
+    if (next) {
+        level++;
+        if (level === 0) {
+
+        }
+        levelElem.innerHTML = level;
+        window.sessionStorage.setItem('level', level)
+        console.log('next level')
+        location.reload(); 
+    } else {
+        level = 0;
+        levelElem.innerHTML = level;
+        window.sessionStorage.setItem('level', level)
+        console.log('level 0')
+    }
+}
+

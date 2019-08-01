@@ -6,21 +6,25 @@
     z-index: 5;
     width: 100vw;
     height: 100vh;
+    display: none;
 }
 
-@media screen and (orientation:portrait) {
-    #verticalWarning {
-        display: block;
+@media screen and (max-width: 800px) {
+    @media (orientation:portrait) {
+        #verticalWarning {
+            display: block;
+        }
+    }
+    
+    @media (orientation:landscape) {
+        #verticalWarning {
+            display: none;
+        }
     }
 }
 
-@media screen and (orientation:landscape) {
-    #verticalWarning {
-        display: none;
-    }
-}
-
-h1, h2 {
+h1,
+h2 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     color: #0075C4;
