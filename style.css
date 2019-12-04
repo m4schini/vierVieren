@@ -39,17 +39,23 @@ h2 {
 
 @media screen and (max-width: 992px) {
     h1 {
-        font-size: 12vh;
+        font-size: 8vh;
         margin-top: 1.5vw !important;
         margin-bottom: 1.5vw !important;
     }
 
     #eq_display {
-        margin-bottom: 7vh;
+        margin-bottom: 5vh;
+    }
+
+    #controls {
+        margin-top: 8px;
+        height: 42px;
+        font-size: 21px;
     }
 
     #menu {
-        font-size: 5vh;
+        font-size: 4vh;
         margin-top: 1.5vw !important;
         margin-bottom: 1.5vw !important;
     }
@@ -70,6 +76,17 @@ h2 {
         margin-bottom: 5vh;
     }
 
+    #controls{
+        margin-top: 8px;
+        height: 80px ;
+        margin: 32px;
+    }
+
+    #controls .col-6 .btn {
+        
+        font-size: 40px !important;
+    }
+
     #menu {
         font-size: 25px;
         margin-bottom: 3vw !important;
@@ -81,7 +98,7 @@ h2 {
     }
 }
 
-#menu {
+#menu, video {
     display: flex;
     justify-content: center;
     align-items: center;

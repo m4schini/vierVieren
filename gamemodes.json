@@ -1,0 +1,122 @@
+{
+    "4x1": {
+      "levels": 5,
+      "elements": 4,
+      "number": 1,
+      "title": "Vier Einsen"
+    },
+    "4x2": {
+      "levels": 7,
+      "elements": 4,
+      "number": 2,
+      "title": "Vier Zweien"
+    },
+    "4x3": {
+      "levels": 11,
+      "elements": 4,
+      "number": 3,
+      "title": "Vier Dreien"
+    },
+    "4x4": {
+      "levels": 10,
+      "elements": 4,
+      "number": 4,
+      "title": "Vier Vieren"
+    },
+    "4x5": {
+      "levels": 8,
+      "elements": 4,
+      "number": 5,
+      "title": "Vier Fünfen"
+    },
+    "4x6": {
+      "levels": 10,
+      "elements": 4,
+      "number": 6,
+      "title": "Vier Sechsen"
+    },
+    "4x7": {
+      "levels": 10,
+      "elements": 4,
+      "number": 7,
+      "title": "Vier Siebenen"
+    },
+    "4x8": {
+      "levels": 10,
+      "elements": 4,
+      "number": 8,
+      "title": "Vier Achten"
+    },
+    "4x9": {
+      "levels": 10,
+      "elements": 4,
+      "number": 9,
+      "title": "Vier Neunen"
+    },
+    "5x1": {
+      "levels": 7,
+      "elements": 5,
+      "number": 1,
+      "title": "Fünf Einsen"
+    },
+    "5x2": {
+      "levels": 11,
+      "elements": 5,
+      "number": 2,
+      "title": "Fünf Zweien"
+    },
+    "5x3": {
+      "levels": 14,
+      "elements": 5,
+      "number": 3,
+      "title": "Fünf Dreien"
+    },
+    "5x4": {
+      "levels": 22,
+      "elements": 5,
+      "number": 4,
+      "title": "Fünf Vieren"
+    },
+    "5x5": {
+      "levels": 13,
+      "elements": 5,
+      "number": 5,
+      "title": "Fünf Fünfen"
+    },
+    "5x6": {
+      "levels": 15,
+      "elements": 5,
+      "number": 6,
+      "title": "Fünf Sechsen"
+    },
+    "5x7": {
+      "levels": 11,
+      "elements": 5,
+      "number": 7,
+      "title": "Fünf Siebenen"
+    },
+    "5x8": {
+      "levels": 13,
+      "elements": 5,
+      "number": 8,
+      "title": "Fünf Achten"
+    },
+    "5x9": {
+      "levels": 13,
+      "elements": 5,
+      "number": 9,
+      "title": "Fünf Neunen"
+    },
+    "5x10": {
+      "levels": 6,
+      "elements": 5,
+      "number": 10,
+      "title": "Fünf Zehner"
+    },
+    "5x11": {
+      "levels": 7,
+      "elements": 5,
+      "number": 11,
+      "title": "Fünf Elfer"
+    }
+  }
