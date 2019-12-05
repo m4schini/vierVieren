@@ -4,6 +4,7 @@ var display = document.getElementById('eq_display'),
     modules = document.getElementById('list_modules'),
     levelElem = document.getElementById('equals_num');
 
+//standard settings of a 4x4
 var gElements = 4,
     gNumber = 4,
     gLevels = 10;
@@ -18,7 +19,7 @@ if (gamemode == null) {
 
 // Create Game
 var gamemodes = {};
-$.getJSON("./gamemodes.json", function (data) {
+$.getJSON("/res/gamemodes.json", function (data) {
     gamemodes = data;
 
     document.getElementById("title").innerHTML = gamemodes[gamemode].title
@@ -56,8 +57,6 @@ if (level == null || gamemode != window.sessionStorage.getItem("gamemode")) {
 }
 levelElem.innerHTML = level;
 window.sessionStorage.setItem('gamemode', gamemode) //set gamemode in cookie 
-
-
 
 // List of number cards
 new Sortable(display, {
@@ -104,7 +103,6 @@ function calc() {
 
             });
         console.log(eval(equation))
-
 
         if (eval(equation) == level) {
             //right answer
