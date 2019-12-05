@@ -12,18 +12,17 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700|Noto+Sans+JP:700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" 
-    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
     <div id="verticalWarning">
         <h2>Bitte halte das Gerät horizontal</h2>
     </div>
-    <!-- Modal -->
+    <!-- Modal that pops up after a succesful Level -->
     <div class="modal fade" id="modal_nextLevel" tabindex="-1" role="dialog" aria-labelledby="modal_nextLevel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -41,6 +40,7 @@
             </div>
         </div>
     </div>
+    <!-- Modal that pops up after a succesful last Level -->
     <div class="modal fade" id="modal_final" tabindex="-1" role="dialog" aria-labelledby="modal_final"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -48,7 +48,7 @@
                 <div class="modal-header">
                     <h1 class="modal-title" id="exampleModalCenterTitle" style="color: #28a745">ALLE LEVEL GESCHAFFT!
                     </h1>
-                    
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -58,13 +58,48 @@
                         <source src="giphy.mp4" type="video/mp4">
                         HTML 5 Videowiedergabe ist nicht unterstützt von deinem Browser
                     </video>
-                  </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" onclick="changeLevel()">Alles Nochmal!</button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Modal that pops up after a failed Level -->
+    <div class="modal fade" id="modal_fail" tabindex="-1" role="dialog" aria-labelledby="modal_fail"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="exampleModalCenterTitle" style="color: red">Falsche Antwort</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Nochmal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal that pops up after a syntax error was detected -->
+    <div class="modal fade" id="modal_err" tabindex="-1" role="dialog" aria-labelledby="modal_err"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="exampleModalCenterTitle" style="color: red">Falsche Syntax</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Nochmal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="container-fluid h-100">
         <div id="top" class="row">
@@ -81,7 +116,7 @@
             <div class="row">
                 <div id="display" class="col-12 row" style="margin-left: 0;">
                     <div id="eq_display" class="col-lg-11 col-10 center-me">
-                        
+
                     </div>
                     <div id="equals" class="col-lg-1 col-2">
                         =<span id="equals_num">0</span>
@@ -96,14 +131,14 @@
                             <div class="card movable" data-math="/">:</div>
                         </div>
                     </div>
-                    
+
                 </div>
 
             </div>
         </div>
         <div class="row" id="controls">
             <div class="col-6">
-                <button class="btn btn-primary w-100 h-100">
+                <button class="btn btn-primary w-100 h-100" onclick="resetDisplay()">
                     <i class="fas fa-undo"></i> Neustarten
                 </button>
             </div>
@@ -115,8 +150,7 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">

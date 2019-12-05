@@ -1,4 +1,4 @@
-
+var url = new URL(window.location.href);
 
 var display = document.getElementById('eq_display'),
     modules = document.getElementById('list_modules'),
@@ -9,23 +9,21 @@ var gElements = 4,
     gLevels = 10;
 
 var level = window.sessionStorage.getItem("level"),
-    gamemode = window.sessionStorage.getItem("gamemode");
+    gamemode = url.searchParams.get("gm");
+
+if (gamemode == null) {
+    url.searchParams.set("gm", "4x4")
+    gamemode = "4x4"
+}
 
 // Create Game
 var gamemodes = {};
-$.getJSON( "./gamemodes.json", function( data ) {
+$.getJSON("./gamemodes.json", function (data) {
     gamemodes = data;
-    if (gamemode == null) {
-        level = 0;
-        gamemode = "5x9";
-        window.sessionStorage.setItem('gamemode', gamemode)
-        
-        console.log(gamemode)
-    }
 
     document.getElementById("title").innerHTML = gamemodes[gamemode].title
     document.getElementById("headline").innerHTML = gamemodes[gamemode].title
-    
+
     //Configure game settings
     gElements = gamemodes[gamemode].elements
     gNumber = gamemodes[gamemode].number
@@ -39,6 +37,7 @@ $.getJSON( "./gamemodes.json", function( data ) {
         newCard.classList.add("card")
         newCard.classList.add("ignore-elements")
         newCard.setAttribute("data-math", gNumber)
+        newCard.setAttribute("data-number", true)
         newCard.innerText = gNumber
 
         document.getElementById("eq_display").append(newCard)
@@ -47,16 +46,20 @@ $.getJSON( "./gamemodes.json", function( data ) {
     console.log(gamemodes[gamemode].title)
 })
 
-
-if (level == null) {
+//handles no gameparameter or change of parameter
+if (window.sessionStorage.getItem("gamemode") == null) {
+    window.sessionStorage.setItem("gamemode", gamemode)
+}
+if (level == null || gamemode != window.sessionStorage.getItem("gamemode")) {
     level = 0;
     console.log(level)
 }
 levelElem.innerHTML = level;
+window.sessionStorage.setItem('gamemode', gamemode) //set gamemode in cookie 
 
 
 
-// Shared lists
+// List of number cards
 new Sortable(display, {
     group: {
         name: 'shared',
@@ -65,6 +68,7 @@ new Sortable(display, {
     animation: 150
 });
 
+// List of operator cards
 new Sortable(modules, {
     group: {
         name: 'shared',
@@ -82,11 +86,13 @@ function calc() {
     var equation = "";
     var isNum = false;
     try {
+        //assemble equation string
         Array.prototype.slice.call(display.getElementsByClassName("card"), 0)
             .forEach(module => {
 
-                var modAttr = module.getAttribute('data-math');
-                if (modAttr === "4" || modAttr === "5") {
+                // check for multible digit numbers
+                var modAttr = module.getAttribute('data-number');
+                if (modAttr) {
                     if (isNum === true) {
                         throw 400;
                     }
@@ -98,30 +104,35 @@ function calc() {
 
             });
         console.log(eval(equation))
+
+
         if (eval(equation) == level) {
-            console.log(true)
-            levelSuc();
+            //right answer
+            $('#modal_nextLevel').modal('toggle')
+        } else {
+            //false answer
+            $('#modal_fail').modal('toggle')
         }
     } catch (err) {
-        console.log("nope")
+        //wrong syntax
+        $('#modal_err').modal('toggle')
     }
 }
 
-function levelSuc() {
-    $('#modal_nextLevel').modal('toggle')
+function resetDisplay() {
+    levelElem.innerHTML = level;
+    window.sessionStorage.setItem('level', level)
+    location.reload();
 }
 
 function changeLevel(next) {
     if (next) {
         level++;
-        if (level > gLevels-1) {
+        if (level > gLevels - 1) {
             $('#modal_final').modal('toggle')
 
         } else {
-            levelElem.innerHTML = level;
-            window.sessionStorage.setItem('level', level)
-            console.log('next level')
-            location.reload();
+            resetDisplay()
         }
     } else {
         level = 0;
