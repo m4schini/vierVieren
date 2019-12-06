@@ -28,10 +28,19 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title" id="exampleModalCenterTitle" style="color: #28a745">Level Geschafft!</h1>
+                    <h1 class="modal-title" style="color: #28a745">Level Geschafft!</h1>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                </div>
+                <div class="modal-body">
+                    Du hast <span id="timecount">0</span> Sekunden gebraucht. 
+                    <p id="timepen">
+                        
+                    </p>
+                    <p>
+                        Du hast <span id="score" style="color: green;"></span> Punkte.
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Nochmal</button>
@@ -46,7 +55,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title" id="exampleModalCenterTitle" style="color: #28a745">ALLE LEVEL GESCHAFFT!
+                    <h1 class="modal-title" style="color: #28a745">ALLE LEVEL GESCHAFFT!
                     </h1>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -56,7 +65,7 @@
                 <div class="modal-body">
                     <video width="320" height="240" style="align-content: center;" autoplay loop>
                         <source src="/res/giphy.mp4" type="video/mp4">
-                        HTML 5 Videowiedergabe ist nicht unterstützt von deinem Browser
+                        HTML 5 Videowiedergabe wird von deinem Browser nicht unterstützt 
                     </video>
                 </div>
                 <div class="modal-footer">
@@ -70,7 +79,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title" id="exampleModalCenterTitle" style="color: red">Falsche Antwort</h1>
+                    <h1 class="modal-title" style="color: red">Falsche Antwort</h1>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -86,13 +95,33 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title" id="exampleModalCenterTitle" style="color: red">Falsche Syntax</h1>
+                    <h1 class="modal-title" style="color: red">Falsche Syntax</h1>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Nochmal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal that pops up for a restart request -->
+    <div class="modal fade" id="modal_restart" tabindex="-1" role="dialog" aria-labelledby="modal_restart"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title">Neustart?</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" 
+                        onclick="resetGame()"><b>Spiel</b> neu starten?</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        onclick="resetLevel()"><b>Level</b> neu starten? (-500 Punkte)</button>
                 </div>
             </div>
         </div>
@@ -135,7 +164,7 @@
         </div>
         <div class="row" id="controls">
             <div class="col-6">
-                <button class="btn btn-primary w-100 h-100" onclick="resetDisplay()">
+                <button class="btn btn-primary w-100 h-100" onclick="restartAlert()">
                     <i class="fas fa-undo"></i> Neustarten
                 </button>
             </div>
