@@ -200,6 +200,7 @@ function changeLevel(next) {
             $('#modal_final').modal('toggle')
             console.log(gl_score)
             document.getElementById("fnscore").innerHTML = gl_score
+            setScore(0)
         } else {
             resetDisplay()
         }
