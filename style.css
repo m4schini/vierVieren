@@ -175,4 +175,5 @@ h2 {
 
 .card.movable {
     border: solid 1px rgb(0, 0, 0, 0.2);
+    width: 55px !important;
 }
