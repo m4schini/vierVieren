@@ -1,4 +1,5 @@
 var url = new URL(window.location.href);
+var notPlayed = true;
 
 var display = document.getElementById('eq_display'),
     modules = document.getElementById('list_modules'),
@@ -154,8 +155,10 @@ function calc() {
         if (eval(equation) == level) {
             //right answer
             $('#modal_nextLevel').modal('toggle')
-
-            evalScore(stopTime())
+            if (notPlayed) {
+                evalScore(stopTime())
+            }            
+            notPlayed = false;
         } else {
             //false answer
             setScore(gl_score + pts_lose)
