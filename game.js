@@ -158,6 +158,7 @@ function calc() {
             evalScore(stopTime())
         } else {
             //false answer
+            setScore(gl_score + pts_lose)
             $('#modal_fail').modal('toggle')
         }
     } catch (err) {

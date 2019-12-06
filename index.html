@@ -43,13 +43,13 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Nochmal</button>
+                    <button type="button" class="btn btn-danger" onclick="resetLevel()">Nochmal</button>
                     <button type="button" class="btn btn-success" onclick="changeLevel(true)">Weiter</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal that pops up after a succesful last Level -->
+    <!-- Modal that pops up after a succesful *last* Level -->
     <div class="modal fade" id="modal_final" tabindex="-1" role="dialog" aria-labelledby="modal_final"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -84,8 +84,10 @@
                     <h1 class="modal-title" style="color: red">Falsche Antwort</h1>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" 
+                        onclick="resetGame()"><b>Spiel</b> neu starten?</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal"
-                        onclick="resetLevel()"><b>Level</b> neu starten? (-500 Punkte)</button>
+                        onclick="resetDisplay()"><b>Level</b> neu starten? (-500 Punkte)</button>
                 </div>
             </div>
         </div>
