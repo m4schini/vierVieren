@@ -12,7 +12,7 @@ var gElements = 4,
 //competitive settings
 var pts_win = 2000,
     pts_lose = -500,
-    time_penalty = 10,
+    time_penalty = 10,  //subtracted every second after penalty start
     penalty_after = 10000, //ms after start
     gamestart = 0;
 
