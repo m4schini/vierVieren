@@ -9,9 +9,21 @@ var gElements = 4,
     gNumber = 4,
     gLevels = 10;
 
-var level = window.sessionStorage.getItem("level"),
-    gamemode = url.searchParams.get("gm");
+//competitive settings
+var pts_win = 2000,
+    pts_lose = -500,
+    time_penalty = 10,
+    penalty_after = 10000, //ms after start
+    gamestart = 0;
 
+var level = window.sessionStorage.getItem("level"),
+    gl_score = window.sessionStorage.getItem("score")
+    gamemode = url.searchParams.get("gm");
+if (gl_score == null) {
+    gl_score = 0
+} else {
+    gl_score = parseInt(gl_score)
+}
 if (gamemode == null) {
     url.searchParams.set("gm", "4x4")
     gamemode = "4x4"
@@ -47,7 +59,7 @@ $.getJSON("/res/gamemodes.json", function (data) {
     console.log(gamemodes[gamemode].title)
 })
 
-//handles no gameparameter or change of parameter
+//handles no game parameter or change of parameter
 if (window.sessionStorage.getItem("gamemode") == null) {
     window.sessionStorage.setItem("gamemode", gamemode)
 }
@@ -80,6 +92,41 @@ new Sortable(modules, {
         evt.item.parentNode.removeChild(evt.item)
     }
 });
+gamestart = new Date()
+/*
+Game constructed.
+*/
+
+function stopTime() {
+    var timeDiff = new Date() - gamestart
+    return timeDiff
+}
+
+function setScore(newScore) {
+    gl_score = newScore
+    window.sessionStorage.setItem("score", newScore)
+}
+
+function evalScore(timeDiff) {
+    var penalty = 0;
+    document.getElementById("timecount").innerText = timeDiff/1000
+    pen_time = Math.floor((timeDiff - penalty_after)/1000)
+
+    if (pen_time >= 1) {
+        penalty = pen_time * time_penalty
+        console.log("penalty: " + penalty)
+
+        document.getElementById("timepen").innerHTML = 'Du hast zuviel Zeit gebraucht. Deswegen wurden dir <span style="color: red;">' + penalty + ' Punkte</span> abgezogen.'
+    }
+    console.log(gl_score)
+    console.log(pts_win)
+    console.log(penalty)
+    console.log(gl_score + pts_win - penalty)
+    var newGlobScore = gl_score + pts_win - penalty;
+    
+    document.getElementById("score").innerText = newGlobScore
+    setScore(newGlobScore)
+}
 
 function calc() {
     var equation = "";
@@ -107,6 +154,8 @@ function calc() {
         if (eval(equation) == level) {
             //right answer
             $('#modal_nextLevel').modal('toggle')
+
+            evalScore(stopTime())
         } else {
             //false answer
             $('#modal_fail').modal('toggle')
@@ -117,10 +166,30 @@ function calc() {
     }
 }
 
+function setLevel(newLevel) {
+    window.sessionStorage.setItem("level", newLevel)
+    level = newLevel
+}
+
+function restartAlert() {
+    $('#modal_restart').modal('toggle')
+  }
+
 function resetDisplay() {
     levelElem.innerHTML = level;
     window.sessionStorage.setItem('level', level)
     location.reload();
+}
+
+function resetLevel() {
+    setScore(gl_score + pts_lose)
+    resetDisplay()
+}
+
+function resetGame() {
+    setLevel(0)
+    setScore(0)
+    resetDisplay()
 }
 
 function changeLevel(next) {
