@@ -197,7 +197,8 @@ function changeLevel(next) {
         level++;
         if (level > gLevels - 1) {
             $('#modal_final').modal('toggle')
-
+            console.log(gl_score)
+            document.getElementById("fnscore").innerHTML = gl_score
         } else {
             resetDisplay()
         }
