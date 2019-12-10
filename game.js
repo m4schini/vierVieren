@@ -66,6 +66,7 @@ if (window.sessionStorage.getItem("gamemode") == null) {
 }
 if (level == null || gamemode != window.sessionStorage.getItem("gamemode")) {
     level = 0;
+    gl_score = 0;
     console.log(level)
 }
 levelElem.innerHTML = level;
