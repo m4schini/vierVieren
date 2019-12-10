@@ -32,7 +32,7 @@ if (gamemode == null) {
 
 // Create Game
 var gamemodes = {};
-$.getJSON("/res/gamemodes.json", function (data) {
+$.getJSON("res/gamemodes.json", function (data) {
     gamemodes = data;
 
     document.getElementById("title").innerHTML = gamemodes[gamemode].title
