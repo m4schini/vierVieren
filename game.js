@@ -1,3 +1,4 @@
+// Developed by Malte Schink (m4schini)
 var url = new URL(window.location.href);
 var notPlayed = true;
 
