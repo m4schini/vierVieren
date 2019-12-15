@@ -110,6 +110,7 @@ function setScore(newScore) {
     window.sessionStorage.setItem("score", newScore)
 }
 
+var newGlobScore = 0;
 function evalScore(timeDiff) {
     var penalty = 0;
     document.getElementById("timecount").innerText = timeDiff/1000
@@ -125,10 +126,10 @@ function evalScore(timeDiff) {
     console.log(pts_win)
     console.log(penalty)
     console.log(gl_score + pts_win - penalty)
-    var newGlobScore = gl_score + pts_win - penalty;
+    newGlobScore = gl_score + pts_win - penalty;
     
     document.getElementById("score").innerText = newGlobScore
-    setScore(newGlobScore)
+    
 }
 
 function calc() {
@@ -159,7 +160,7 @@ function calc() {
             $('#modal_nextLevel').modal('toggle')
             if (notPlayed) {
                 evalScore(stopTime())
-            }            
+            }         
             notPlayed = false;
         } else {
             //false answer
@@ -200,6 +201,7 @@ function resetGame() {
 
 function changeLevel(next) {
     if (next) {
+        setScore(newGlobScore)
         level++;
         if (level > gLevels - 1) {
             $('#modal_final').modal('toggle')
